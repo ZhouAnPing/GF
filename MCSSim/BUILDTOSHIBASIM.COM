@@ -8,6 +8,6 @@ ssp_cimlib:cimlib/lib,dmq$lib:dmq/opt
 $ write sys$output "done with linking"
 $ del *.obj;*
 $ purge *.*
-$
+$copy VMSSIM.EXE; PROMPRI1:[FAB3PRI.SSP.F235MCS.MCSSIM]VMSSIM.EXE;/log
 $!--------------------------------------------------------------
 $! GF - End of CIM System custom modifications
