@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>C3MCSSync</name>
+	<name>C3Sync</name>
 	<comment></comment>
 	<projects>
 		<project>CIMLIB</project>
