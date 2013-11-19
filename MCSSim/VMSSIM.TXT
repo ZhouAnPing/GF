@@ -1,0 +1,14 @@
+!-------------------------------------------------
+!
+!  VMSSIM.EXE - program to simulate the various
+!               MCS systems. Use the .CFG files
+!               as inputs to the program.
+!  Author - Ivan Pereira - Compaq/hp Aug 2oo2
+!
+!-------------------------------------------------
+VIFE
+CMD/A="MACH_CMD" CMD_TYPE/A="LIST_DB" PAGENUMBER/U4=1 TID/U4=4
+CMD/A="EVENT_SETUP" TID/U4=4
+
+Delimery
+|MCS_GET_LOT_LOC|

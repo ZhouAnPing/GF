@@ -1,0 +1,21 @@
+! GF - Start of CIM System custom modifications
+!--------------------------------------------------------------
+! MCS.BLD
+!
+
+! Build C objects...
+$ purge *.*
+$ cc /noopt dmqutil.c + DMQ$USER:DMQ/LIB
+$ cc /noopt talkstd.c + DMQ$USER:DMQ/LIB
+$ cc /noopt Init_decmsg_Q + DMQ$USER:DMQ/LIB
+$ cc /noopt get_mcs_info + DMQ$USER:DMQ/LIB
+$ cc /noopt trcutil.c
+$ del mcslib.olb;*
+$ library /create mcslib DMQUTIL.OBJ,GET_MCS_INFO.OBJ,-
+                  INIT_DECMSG_Q.OBJ,TALKSTD.OBJ,TRCUTIL.OBJ
+
+$! Build Fortran objects...
+mcssync.for image options=mcslib/lib,prom:promis/lib,dmq$lib:dmq/opt,tim:timwrtshr/opt,wct:wctwrtshr/opt,tps:server/opt
+
+!--------------------------------------------------------------
+! GF - End of CIM System custom modifications
