@@ -227,7 +227,7 @@ int MCSMethodSendLotLoc(char *Carrierid, char *Amhsequipid, char *Category) {
   sprintf(mcsLocation, "%s,%s%s", Amhsequipid, Category, "");
   //update PROMIS Global Section
   size_t lotId_len = strlen(Carrierid);
-  size_t mcsLoc_len = mcsLoc_len = strlen(mcsLocation);  //_SIZ_AMHSEQUIPID + _SIZ_CATEGORY - 1;
+  size_t mcsLoc_len = strlen(mcsLocation);  //_SIZ_AMHSEQUIPID + _SIZ_CATEGORY - 1;
   updatePROMISForEM(Carrierid, mcsLocation, &lotId_len, &mcsLoc_len);
   //Update ROMARIC MCS
   if (checkHSMSState()) {

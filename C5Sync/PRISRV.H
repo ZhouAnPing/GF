@@ -155,6 +155,19 @@ short TransNet_Status;
 short TransNet_Startup;
 
 /***************** End of parameter definitions **************************/
+
+/*********Begin define method for fortran**************/
+//MCS location like to get from Fortran
+struct FortranLocation {
+  unsigned short length;/* VMS fixed length string  */
+  char * location;/* descriptor used in FORTRAN */
+};
+extern void updateLotLocInPROMIS(char *lotId, char *mcsLocation, size_t * lotId_len, size_t * mcsLoc_len);
+extern void getLotLocFromPromis(struct FortranLocation*, char *lotId, size_t * lotId_len);
+/*********End define method for fortran**************/
+
+
+
 /*************************************************************************/
 /***************** Start of function prototypes **************************/
 

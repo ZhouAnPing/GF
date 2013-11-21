@@ -15,11 +15,16 @@ $ cc priloc.c + DMQ$USER:DMQ/LIB
 $ write sys$output "successfully compiled priloc.c"
 $ cc prireply.c + DMQ$USER:DMQ/LIB
 $ write sys$output "successfully compiled prireply.c"
-$ link/exe=c5syncsrv.exe primain.obj,pridisp.obj,priparse.obj,-
+$! Build Fortran objects...
+$ @bld:compile  mcssync.for
+$ write sys$output "successfully compiled mcsint.for"
+$ link/exe=c5syncsrv.exe mcssync.obj,primain.obj,pridisp.obj,priparse.obj,-
 primethod.obj,priloc.obj,pristartup.obj,prireply.obj,-
-ssp_cimlib:cimlib/lib,dmq$lib:dmq/opt,BLD:IMAGE/OPTIONAL
+ssp_cimlib:cimlib/lib,prom:promis/lib,dmq$lib:dmq/opt,-
+tim:timwrtshr/opt,wct:wctwrtshr/opt,tps:server/opt,BLD:IMAGE/OPTIONAL
 $ write sys$output "done with linking"
 $ del *.obj;*
 $ purge *.*
+$ copy c5syncsrv.exe; PROMPRI1:[FAB3PRI.SSP.F235MCS.C5SYNC]c5syncsrv.exe; /log
 $!--------------------------------------------------------------
 $! GF - End of GF System custom modifications

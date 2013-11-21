@@ -768,8 +768,17 @@ int List_DB(void) {
         if (strlen(dummynumber[i]) > 7) {
           sscanf(dummynumber[i], "%3s%2s%1s%3s%1s%3s", s4, s1, s4, s2, s4, s3);
           sprintf(tmpnumber[i], "%s%s%s", s1, s2, s3);
-        } else
+        } else{
           sprintf(tmpnumber[i], "%s", dummynumber[i]);
+        }
+        sprintf ( CarrierEntered,"%s,%s",tmpamhsequipid[i], tmpnumber[i]);
+        fprintf(stderr, "Carrier from MCSSIM is [%d]%s, Location %s\n", i,CarrierEntered,tmpcarrierid[i]);
+
+        //update PROMIS Global Section
+		size_t lotId_len = strlen(tmpcarrierid[i]);
+		size_t  mcsLoc_len = strlen(CarrierEntered);  //_SIZ_AMHSEQUIPID + _SIZ_CATEGORY - 1;
+		updateLotLocInPROMIS(tmpcarrierid[i], CarrierEntered, &lotId_len, &mcsLoc_len);
+
       }
       /***********************************************************************************
        *** Mods for location added here
