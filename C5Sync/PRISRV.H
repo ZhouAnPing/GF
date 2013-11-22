@@ -174,29 +174,16 @@ extern void getLotLocFromPromis(struct FortranLocation*, char *lotId, size_t * l
 
 int PRIDispatch (char *Cmd);
 int PRIDispatch_NVFEI (char *Cmd);
-
-int PRIParseSetLotLocation( char *Mid,char *Carrierid,char *Amhsequipid,
-                                                 char *Category);
-int PRIParseSetLotLocation_NVFEI(char *Carrierid,char *Amhsequipid,
-                                                 char *Category);
-int PRIParseClearLotLocation( char *Mid,char *Carrierid,char *Amhsequipid);
 int PRIParseCarrierRemoved( char *Carrierid, char *Amhsequipid);
 int PRIParseCarrierEntered( char *Carrierid,char *Amhsequipid, char *Category,char *Number);
-int PRIParseRetrieveLot( char *Mid, char *Carrierid, char *Amhsequipid, char *UserId, char *OutPort);
 int PRIParseMid( char *Mid);
 int PRIParseCarrierid(char *Carrierid);
-int PRIParseMoveLotLoc(char *UserID,char *Carrierid,char *Eqptid,char *Location,char *Priority);
 
 int PRIMethodCarrierEntered(char *Carrierid,char *Amhsequipid,char *Category,
                                                                         char *Number,int *ptpstatus,char *ErrorMsg);
 int PRIMethodCarrierRemoved(char *Carrierid,char *amhsequipid,int *ptpstatus,char *ErrorMsg);
 int PRIMethodLocChanged(char *Carrierid,char *Amhsequipid,char *Category,
                                                                         char *Number,int *ptpstatus,char *ErrorMsg);
-int PRIMethodMove(char *LotId,char *EqptId, char *UserId, char *OutputPort, char *ErrorMsg);
-int PRIMethodGetLotLoc(char *CarrierId,char *Amhsequipid,char *Location,int *ptpstatus,
-                                           char *ErrorMsg);
-int PRIMethodMoveLotLoc(char *Carrierid,char *Eqptid,char *Location, 
-                        char *UserID, char *Priority,int *pristatus,char *ErrorMsg);
 int PRIMethodShutDown(char *ErrorMsg);
 
 int PRIReplyCmdack(char *MachId);
@@ -217,20 +204,7 @@ int ExecFailedSetLocations();
 int FreeFailedSetLocationsMem();
 int DelFromFailedSetLocationsList( char *);
 int Debug_list( int );
-int FAB3EventSYNC();
 int IsSMPLoc(char *);
-int Fab3Stocker(char *);
 int chkPromisLoc();
-int FAB3MethodCarrierEntered( char *, char *, char *, char *, int *, char *);
-int FAB3MethodLocChanged( char *, char *, char *, char *, int *, char *);
-int FAB3MethodCarrierRemoved( char *, char *, int *, char *);
-int FAB3CreateSendF3Event( char *event, int arrcount, char carrierid[][_SIZ_CARRIERID]
-      , char location[][_SIZ_GENFIELD], char equipment[][_SIZ_GENFIELD]);
-int  FAB3ParseExecF3GetAllLotLoc(void);
-int  FAB3StockerDbList(char *);
-int  FAB3MethodMove(char *LotId, char *EqptId, char *OutPort, char *UserId, int *pristatus, char *ErrorMsg);
-void PRIParseToshMcsLocChange(int *count, char tCarrierId[][_SIZ_CARRIERID], char tLocationId[][_SIZ_LOCATIONID]);
-int  PRIMethodToshMcsLocChange(int arrcount, char lotid[][_SIZ_CARRIERID], char lotlocation[][_SIZ_LOCATIONID]);
-int  PRIMethodToshLotLoc(void);
 char *rTrim(char *tStr);
 #endif

@@ -651,14 +651,6 @@ int MH_TransNet_Init(unsigned int Tid) {
   Host_Authorize();
   List_DB();
   if (TRC_ChkAlarm()) {
-    /* Send SYNC event to FAB3 PRI through Gateway */
-    FAB3EventSYNC();
-    if (TRC_ChkAlarm())
-      TRC_Send(LOG_ALIAS, _TRC_LVL_DEBUG, "%s: SYNC to FAB3 Succeeded.\n", TRC_GetTime());
-    else {
-      TRC_Send(LOG_ALIAS, _TRC_LVL_DEBUG, "%s: SYNC to FAB3 Failed. Exitcode[%d].\n", TRC_GetTime(), TRC_GetAlarm());
-      TRC_ClrAlarm();
-    }
     return (TRC_SetAlarm("MH_TransNet_Init", _RET_SUCCESS));
   } else
     return (TRC_GetAlarm());
