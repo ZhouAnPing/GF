@@ -86,7 +86,7 @@ void startHSMS(int * port, int* RetSts, char *ErrMsgC) {
   }
   if (GetHSMSState() != HSMS_SELECTED) {
     strcpy(ErrMsgC, TRC_GetTime());
-    strcat(ErrMsgC, "ROMARIC HSMS is not connected.");
+    strcat(ErrMsgC, "ROMARIC HSMS is not connected.\n");
     *RetSts = 1;
   }
 }
@@ -118,10 +118,18 @@ void checkHSMSState(int* RetSts, char *ErrMsgC) {
  * Listen ROMARIC MCS Event
  */
 int listenHSMS() {
+  char ErrorMsg[_SIZ_GENFIELD]={0};
+  //ErrorMsg = { 0 };
   printf("Loop for Listening to the ROMARIC HSMS Event....\n");
   while (1) {
     // printf("Loop for Listening to the ROMARIC HSMS Event....\n");
-    printf("%s:HSMS State:s%\n",TRC_GetTime(),GetHSMSState());
+    if (GetHSMSState() != HSMS_SELECTED) {
+       strcpy(ErrorMsg, TRC_GetTime());
+       strcat(ErrorMsg, "ROMARIC HSMS is not connected.");
+       printf(ErrorMsg);
+     }else{
+      printf("ROMARIC HSMS is connected.");
+     }
     sleep(2);
   }
   return 0;
